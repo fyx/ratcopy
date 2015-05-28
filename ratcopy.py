@@ -19,17 +19,17 @@ def rattic_global_completer(prefix, **kwargs):
       return list
 
 def rattic_item_search(filter):
-  reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/?title__contains=' + filter, headers=headers, verify=False)
+  reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/?title__contains=' + filter, headers=headers)
   reply.raise_for_status()
   return json.loads(reply.content)
 
 def rattic_item_get(filter):
-  reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/?title__exact=' + filter, headers=headers, verify=False)
+  reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/?title__exact=' + filter, headers=headers)
   reply.raise_for_status()
   data = json.loads(reply.content) 
   if data['objects']: 
     id = str(data['objects'][0]['id'])
-    reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/' + id + '/', headers=headers, verify=False)
+    reply = requests.get('https://' + config.rattic_server + '/api/' + api_version + '/cred/' + id + '/', headers=headers)
     reply.raise_for_status()
     data = json.loads(reply.content)
     return data['password']
