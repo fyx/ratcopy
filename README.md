@@ -1,2 +1,2 @@
 # ratcopy
-Rattic CLI with autocomplete and copypaste features
+RatticDB CLI with autocomplete and copypaste features
